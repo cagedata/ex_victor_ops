@@ -3,34 +3,37 @@ defmodule ExVictorOps.Mixfile do
 
   def project do
     [app: :ex_victor_ops,
+     source_url: "https://github.com/cagedata/ex_victor_ops",
      version: "0.1.0",
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
-     deps: deps]
+     deps: deps,
+     docs: [ extras: ["README.md", "CONTRIBUTING.md"]],
+     description: description]
   end
 
-  # Configuration for the OTP application
-  #
-  # Type "mix help compile.app" for more information
+  def package do
+    maintainers: ["David Long <dlong@cagedata.com>"],
+    licenses: ["MIT"],
+    links: %{"GitHub" => "https://github.com/cagedata/ex_victor_ops"}
+  end
+
   def application do
     [applications: [:logger, :httpotion, :poison]]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
   defp deps do
     [
       { :httpotion, "~> 2.2" },
       { :poison, "~> 2.1" },
       { :mock, "~> 0.1.1", only: :test }
     ]
+  end
+
+  defp description do
+    """
+    VictorOps API library for Elixir
+    """
   end
 end
