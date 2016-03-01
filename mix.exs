@@ -3,7 +3,7 @@ defmodule ExVictorOps.Mixfile do
 
   def project do
     [app: :ex_victor_ops,
-     version: "0.0.1",
+     version: "0.1.0",
      elixir: "~> 1.2",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
@@ -14,7 +14,7 @@ defmodule ExVictorOps.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger]]
+    [applications: [:logger, :httpotion, :poison]]
   end
 
   # Dependencies can be Hex packages:
@@ -27,6 +27,10 @@ defmodule ExVictorOps.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    []
+    [
+      { :httpotion, "~> 2.2" },
+      { :poison, "~> 2.1" },
+      { :mock, "~> 0.1.1", only: :test }
+    ]
   end
 end

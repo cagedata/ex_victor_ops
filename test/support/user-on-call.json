@@ -1,0 +1,81 @@
+[
+  {
+    "team": "everyone",
+    "schedule": [
+      {
+        "onCall": "usera",
+        "rotationName": "User A",
+        "shiftName": "User A",
+        "rolls": [],
+        "policyType": "RotationGroupPolicy",
+        "shiftRoll": "2016-02-26T09:00:00-05:00"
+      },
+      {
+        "onCall": "usera",
+        "rotationName": "User B",
+        "shiftName": "User B",
+        "rolls": [],
+        "policyType": "RotationGroupPolicy",
+        "shiftRoll": "2016-02-26T09:00:00-05:00"
+      },
+      {
+        "onCall": "userc",
+        "rotationName": "User C",
+        "shiftName": "User C",
+        "rolls": [],
+        "policyType": "RotationGroupPolicy",
+        "shiftRoll": "2016-02-26T09:00:00-05:00"
+      },
+      {
+        "onCall": "userd",
+        "rotationName": "User D",
+        "shiftName": "User D",
+        "rolls": [],
+        "policyType": "RotationGroupPolicy",
+        "shiftRoll": "2016-02-26T09:00:00-05:00"
+      },
+      {
+        "onCall": "usere",
+        "rotationName": "User E",
+        "shiftName": "User E",
+        "rolls": [],
+        "policyType": "RotationGroupPolicy",
+        "shiftRoll": "2016-02-26T09:00:00-05:00"
+      }
+    ],
+    "overrides": []
+  },
+  {
+    "team": "dev-team",
+    "schedule": [
+      {
+        "onCall": "userf",
+        "rotationName": "Standard Dev On-Call",
+        "shiftName": "Standard Dev On-Call",
+        "rolls": [
+          {
+            "change": "2016-02-29T09:00:00-05:00",
+            "until": "2016-03-07T09:00:00-05:00",
+            "onCall": "userf",
+            "isRoll": true
+          },
+          {
+            "change": "2016-03-07T09:00:00-05:00",
+            "until": "2016-03-14T09:00:00-04:00",
+            "onCall": "userf",
+            "isRoll": true
+          },
+          {
+            "change": "2016-03-14T09:00:00-04:00",
+            "until": "2016-03-21T09:00:00-04:00",
+            "onCall": "userf",
+            "isRoll": true
+          }
+        ],
+        "policyType": "RotationGroupPolicy",
+        "shiftRoll": "2016-02-29T09:00:00-05:00"
+      }
+    ],
+    "overrides": []
+  }
+]
