@@ -10,24 +10,29 @@ defmodule ExVictorOps.Mixfile do
      start_permanent: Mix.env == :prod,
      deps: deps,
      docs: [ extras: ["README.md", "CONTRIBUTING.md"]],
-     description: description]
-  end
-
-  def package do
-    maintainers: ["David Long <dlong@cagedata.com>"],
-    licenses: ["MIT"],
-    links: %{"GitHub" => "https://github.com/cagedata/ex_victor_ops"}
+     description: description,
+     package: package]
   end
 
   def application do
     [applications: [:logger, :httpotion, :poison]]
   end
 
+  defp package do
+    [
+      maintainers: ["David Long <dlong@cagedata.com>"],
+      licenses: ["MIT"],
+      links: %{"GitHub" => "https://github.com/cagedata/ex_victor_ops"}
+    ]
+  end
+
   defp deps do
     [
       { :httpotion, "~> 2.2" },
       { :poison, "~> 2.1" },
-      { :mock, "~> 0.1.1", only: :test }
+      { :mock, "~> 0.1", only: :test },
+      { :ex_doc, "~> 0.11", only: [:dev, :test, :docs]},
+      { :earmark, ">= 0.0.0", only: [:dev, :test, :docs]}
     ]
   end
 
