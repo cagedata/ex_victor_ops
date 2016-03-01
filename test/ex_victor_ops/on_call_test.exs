@@ -11,7 +11,7 @@ defmodule ExVictorOps.OnCallTest do
   end
 
   test_with_mock "gets on-call team", %{doc: doc}, Api, [], [get: fn(_url, _headers) -> doc end] do
-    OnCall.get("support-team")
+    OnCall.get_team("support-team")
     assert called Api.get(:_, :_)
   end
 end
