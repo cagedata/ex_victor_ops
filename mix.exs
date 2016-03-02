@@ -32,7 +32,7 @@ defmodule ExVictorOps.Mixfile do
       {:poison, "~> 2.1"},
       {:mock, "~> 0.1", only: :test},
       {:ex_doc, "~> 0.11", only: [:dev, :test, :docs]},
-      {:earmark, only: [:dev, :test, :docs]}
+      {:earmark, only: [:dev, :test, :docs]},
       {:inch_ex, only: :docs}
     ]
   end
