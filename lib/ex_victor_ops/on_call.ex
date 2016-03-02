@@ -1,4 +1,15 @@
 defmodule ExVictorOps.OnCall do
+  @moduledoc """
+  Interacts with the On-Call endpoints of the VictorOps API.
+
+  ## Examples
+
+      ExVictorOps.OnCall.get_team "support"
+      %HTTPotion.Response({...})
+
+      ExVictorOps.OnCall.get_user "davejlong"
+      %HTTPotion.Response({...})
+  """
   alias ExVictorOps.Api
   alias __MODULE__
 
