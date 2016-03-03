@@ -2,6 +2,8 @@
 
 [![Hex.pm](https://img.shields.io/hexpm/v/ex_victor_ops.svg)](https://hex.pm/packages/ex_victor_ops)
 [![Build Status](https://travis-ci.org/cagedata/ex_victor_ops.svg?branch=master)](https://travis-ci.org/cagedata/ex_victor_ops)
+[![Doc
+Status](https://inch-ci.org/github/cagedata/ex_victor_ops.svg?branch=master)](https://inch-ci.org/github/cagedata/ex_victor_ops)
 
 Gain access to your favorite On-Call management tool from your favorite language. ExVictorOps lets
 you program against the [VictorOps](http://victorops.com) API to make On-Call suck even less by integrating it into the
