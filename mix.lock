@@ -5,4 +5,4 @@
   "inch_ex": {:hex, :inch_ex, "0.5.1"},
   "meck": {:hex, :meck, "0.8.4"},
   "mock": {:hex, :mock, "0.1.1"},
-  "poison": {:hex, :poison, "2.1.0"}}
+  "poison": {:hex, :poison, "1.5.2"}}

@@ -37,10 +37,8 @@ defmodule ExVictorOps.OnCall do
     qs = Enum.map_join(qs, "&", fn({k, v}) -> "#{k}=#{v}" end)
     response = Api.get("team/#{team}/oncall/schedule?#{qs}")
     if response.status_code == 200 do
-      Poison.decode response.body, as: %Entities.OnCall{}
+      Poison.decode response.body, as: Entities.OnCall
     else
-      require IEx
-      IEx.pry
     end
   end
 
@@ -68,10 +66,8 @@ defmodule ExVictorOps.OnCall do
     qs = Enum.map_join(qs, "&", fn({k, v}) -> "#{k}=#{v}" end)
     response = Api.get("user/#{user}/oncall/schedule?#{qs}")
     if response.status_code == 200 do
-      Poison.decode response.body, as: [%Entities.OnCall{}]
+      Poison.decode response.body, as: [Entities.OnCall]
     else
-      require IEx
-      IEx.pry
     end
   end
 end
