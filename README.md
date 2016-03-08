@@ -15,7 +15,7 @@ ExVictorOps is currently very beta software. You can install it from Hex:
 
     def deps do
       [
-        { :ex_victor_ops, "~> 0.1.0" }
+        { :ex_victor_ops, "~> 0.2.0" }
       ]
     end
 
@@ -54,15 +54,15 @@ ExVictorOps will come with modules to support each of the [VictorOps API endpoin
 
     # Get a team's on-call schedule
     ExVictorOps.OnCall.get_team "support"
-    # => HTTPotion.Response(%{...})
+    # => %ExVictorOps.Entities.OnCall{...}
 
     # Get today's on-call schedule for a team
     ExVictorOps.OnCall.get_team "support", %{days_forward: 0}
-    # => HTTPotion.Response(%{...})
+    # => %ExVictorOps.Entities.OnCall{...}
 
     # Get a user's on-call schedule:
     ExVictorOps.OnCall.get_user "davejlong"
-    # => HTTPotion.Response(%{...})
+    # => [%ExVictorOps.Entities.OnCall{...}]
 
 ## Contibuting
 
