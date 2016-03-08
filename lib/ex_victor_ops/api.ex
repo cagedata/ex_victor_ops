@@ -11,7 +11,6 @@ defmodule ExVictorOps.Api do
   """
   use HTTPotion.Base
   alias ExVictorOps.Config
-  alias __MODULE__ # Necessary for mocks in tests
 
   def process_url(url) do
     Config.base_url <> url
@@ -24,6 +23,6 @@ defmodule ExVictorOps.Api do
   end
 
   def process_response_body(body) do
-    body |> IO.iodata_to_binary |> Poison.decode!
+    body |> IO.iodata_to_binary
   end
 end
