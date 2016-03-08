@@ -6,14 +6,14 @@ defmodule ExVictorOps.Config do
     @doc """
     Returns the API ID for your account. Set it in `config/config.exs`:
 
-      config :ex_victor_ops, api_id: "YOUR_API_ID"
+        config :ex_victor_ops, api_id: "YOUR_API_ID"
     """
     def api_id, do: Application.get_env(:ex_victor_ops, :api_id)
 
     @doc """
     Returns the API Key for your account. Set it in `config/config.exs`:
 
-      config :ex_victor_ops, api_key: "YOUR_API_KEY"
+        config :ex_victor_ops, api_key: "YOUR_API_KEY"
     """
     def api_key, do: Application.get_env(:ex_victor_ops, :api_key)
 
@@ -21,7 +21,7 @@ defmodule ExVictorOps.Config do
     Returns the domain fo the VictorOps API. Defaults api.victorops.com", but can be overridden
     in `config/config.exs`
 
-      config :ex_victor_ops, api_domain: "other.victorops.com"
+        config :ex_victor_ops, api_domain: "other.victorops.com"
     """
     def api_domain, do: Application.get_env(:ex_victor_ops, :api_domain) || "api.victorops.com"
 
@@ -29,7 +29,7 @@ defmodule ExVictorOps.Config do
     Returns the version of the API that ExVictorOps is going to talk to. Defaults to "v1", but
     can be overriden in `config/config.exs`
 
-      config :ex_victor_ops, api_version: "vX"
+        config :ex_victor_ops, api_version: "vX"
     """
     def api_version, do: Application.get_env(:ex_victor_ops, :api_version) || "v1"
 
