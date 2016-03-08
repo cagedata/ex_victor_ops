@@ -12,6 +12,7 @@ defmodule ExVictorOps.OnCall do
   """
   alias ExVictorOps.Api
   alias ExVictorOps.Entities
+  alias ExVictorOps.ApiError
 
   @doc """
   Returns a team's on-call schedule from the VictorOps API.
@@ -39,6 +40,7 @@ defmodule ExVictorOps.OnCall do
     if response.status_code == 200 do
       Poison.decode response.body, as: Entities.OnCall
     else
+      {:error, ApiError.error_for response.status_code}
     end
   end
 
@@ -68,6 +70,7 @@ defmodule ExVictorOps.OnCall do
     if response.status_code == 200 do
       Poison.decode response.body, as: [Entities.OnCall]
     else
+      {:error, ApiError.error_for response.status_code}
     end
   end
 end
