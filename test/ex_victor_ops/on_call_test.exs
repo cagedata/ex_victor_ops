@@ -2,6 +2,8 @@ defmodule ExVictorOps.OnCallTest do
   use ExUnit.Case, async: false
   import Mock
 
+  doctest ExVictorOps.OnCall
+
   setup do
     team = %HTTPotion.Response{
       body: File.read!("./test/support/team-on-call.json"),
