@@ -39,8 +39,7 @@ defmodule ExVictorOps.OnCall do
     if response.status_code == 200 do
       Poison.decode response.body, as: %Entities.OnCall{}
     else
-      require IEx
-      IEx.pry
+      # Need to do something with errors
     end
   end
 
@@ -70,8 +69,7 @@ defmodule ExVictorOps.OnCall do
     if response.status_code == 200 do
       Poison.decode response.body, as: [%Entities.OnCall{}]
     else
-      require IEx
-      IEx.pry
+      # Need to do something with error
     end
   end
 end
