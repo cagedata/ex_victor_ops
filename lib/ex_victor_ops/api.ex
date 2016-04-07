@@ -12,10 +12,28 @@ defmodule ExVictorOps.Api do
   use HTTPotion.Base
   alias ExVictorOps.Config
 
+  @doc """
+  Set the URL to perform HTTP request against.
+
+  ## Examples
+
+      iex> ExVictorOps.Api.process_url "on-call"
+      "https://api.victorops.com/api-public/v1/on-call"
+  """
   def process_url(url) do
     Config.base_url <> url
   end
 
+  @doc """
+  Adds the VictorOps headers to a request.
+
+  ## Examples
+
+      iex> ExVictorOps.Api.process_request_headers %{}
+      %{"User-Agent": "ex-victor-ops",
+        "X-VO-Api-Id": "foobar",
+        "X-VO-Api-Key": "helloworld"}
+  """
   def process_request_headers(headers) do
     Dict.put(headers, :"User-Agent", "ex-victor-ops")
     |> Dict.put(:"X-VO-Api-Id", Config.api_id)

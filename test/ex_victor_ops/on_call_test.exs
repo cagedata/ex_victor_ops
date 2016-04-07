@@ -29,8 +29,6 @@ defmodule ExVictorOps.OnCallTest do
 
   test_with_mock "get_team can return ApiError", %{error: error}, ExVictorOps.Api, [], [get: fn(_url) -> error end] do
     {:error, team} = ExVictorOps.OnCall.get_team("support-team")
-    require IEx
-    IEx.pry
     assert %ExVictorOps.ApiError{} = team
   end
 

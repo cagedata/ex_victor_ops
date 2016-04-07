@@ -39,8 +39,8 @@ defmodule ExVictorOps.Mixfile do
       {:mock, "~> 0.1", only: :test},
       {:dialyxir, "~> 0.3", only: [:dev, :test]},
       {:ex_doc, "~> 0.11", only: [:dev, :test, :docs]},
-      {:earmark, only: [:dev, :test, :docs]},
-      {:inch_ex, only: :docs},
+      {:earmark, ">= 0.0.0", only: [:dev, :test, :docs]},
+      {:inch_ex, ">= 0.0.0", only: :docs},
       {:excoveralls, "~> 0.4", only: :test}
     ]
   end
