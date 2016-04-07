@@ -10,4 +10,4 @@ before_script:
 after_script:
   - MIX_ENV=docs mix deps.get
   - MIX_ENV=docs mix inch.report
-script: mix test
+script: mix coveralls.travis

@@ -11,7 +11,13 @@ defmodule ExVictorOps.Mixfile do
      deps: deps,
      docs: [ extras: ["README.md", "CONTRIBUTING.md"]],
      description: description,
-     package: package]
+     package: package,
+     test_coverage: [tool: ExCoveralls],
+     preferred_cli_env: ["coveralls": :test, "coveralls.detail": :test, "coveralls.post": :test],
+     dialyzer: [
+       # plt_file: "#{System.get_env("HOME")}/#{plt_filename}",
+       flags: ["--no_native", "-Wno_match", "-Wno_return"]
+     ]]
   end
 
   def application do
@@ -31,9 +37,11 @@ defmodule ExVictorOps.Mixfile do
       {:httpotion, "~> 2.2"},
       {:poison, "~> 2.1"},
       {:mock, "~> 0.1", only: :test},
+      {:dialyxir, "~> 0.3", only: [:dev, :test]},
       {:ex_doc, "~> 0.11", only: [:dev, :test, :docs]},
       {:earmark, only: [:dev, :test, :docs]},
-      {:inch_ex, only: :docs}
+      {:inch_ex, only: :docs},
+      {:excoveralls, "~> 0.4", only: :test}
     ]
   end
 
