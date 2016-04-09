@@ -8,21 +8,6 @@ defmodule ExVictorOps.ApiError do
     * `status_code` - HTTP status code returned by VictorOps API
 
   Returns `{code, message}` for the status code
-
-  ## Examples
-
-      iex> ExVictorOps.ApiError.error_for 200
-      %ExVictorOps.ApiError{code: :success, message: _}
-      iex> ExVictorOps.ApiError.error_for 400
-      %ExVictorOps.ApiError{code: :argument_error, message: _}
-      iex> ExVictorOps.ApiError.error_for 401
-      %ExVictorOps.ApiError{code: :authentication_error, message: _}
-      iex> ExVictorOps.ApiError.error_for 403
-      %ExVictorOps.ApiError{code: :authentication_error, message: _}
-      iex> ExVictorOps.ApiError.error_for 404
-      %ExVictorOps.ApiError{code: :resource_not_found, message: _}
-      iex> ExVictorOps.ApiError.error_for 500
-      %ExVictorOps.ApiError{code: :server_error, message: _}
   """
   @spec error_for(Integer.t) :: %ExVictorOps.ApiError{}
   def error_for(status_code) do
