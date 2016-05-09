@@ -5,10 +5,10 @@ defmodule ExVictorOps.OnCall do
   ## Examples
 
       ExVictorOps.OnCall.get_team "support"
-      %ExVictorOps.Entity.OnCall({...})
+      {:ok, %ExVictorOps.Entities.OnCall{}}
 
       ExVictorOps.OnCall.get_user "davejlong"
-      [%ExVictorOps.Entity.OnCall({...})]
+      {:ok, [%ExVictorOps.Entities.OnCall{}]}
   """
   alias ExVictorOps.Api
   alias ExVictorOps.Entities
@@ -28,7 +28,7 @@ defmodule ExVictorOps.OnCall do
 
   Returns `ExVictorOps.Entities.OnCall` if successful.
   """
-  @spec get_team(String.t, [{atom(), String.t}]) :: %ExVictorOps.Entities.OnCall{}
+  @spec get_team(String.t, [{:atom, String.t}]) :: {:atom, any()}
   def get_team(team, options \\ []) do
     qs = %{
       daysForward: options[:days_forward] || 14,
