@@ -17,6 +17,7 @@ defmodule ExVictorOps.Incidents do
   passed in arguments, all incidents are pulled from the VictorOps API and
   then filtered.*
 
+  TODO: Args are not implemented yet
   Args:
     * `phase` - Filters incident by phase. Can be one of `:unacked`, `:acked`, or `:resolved`. Defaults to nil, or all incidents
     * `team` - Team slug to get incidents for. Defaults to nil, or all teams
@@ -25,8 +26,9 @@ defmodule ExVictorOps.Incidents do
   def get(phase \\ nil, team \\ nil) do
     response = Api.get("incidents")
     if response.status_code == 200 do
-      Poison.decode response.body, as: %Entities.Incident{}
-      # TODO: Parse the specific phase or team for arguments
+      incidents = Poison.decode!(response.body)["incidents"]
+        |> Enum.map(&struct(Entities.Incident, &1))
+      {:ok, incidents}
     else
       {:error, ApiError.error_for response.status_code}
     end

@@ -41,5 +41,7 @@ defmodule ExVictorOps.Entities.Incident do
     }
   """
   @derive [Poison.Encoder]
-  defstruct incidents: []
+  defstruct incidentNumber: nil, startTime: nil, currentPhase: nil, alertCount: 0,
+    lastAlertTime: nil, lastAlertId: nil, entityId: nil, host: nil, service: nil,
+    pagedUsers: [], pagedTeams: [], transitions: []
 end

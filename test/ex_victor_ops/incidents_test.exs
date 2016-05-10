@@ -20,8 +20,8 @@ defmodule ExVictorOps.IncidentsTest do
 
   test_with_mock "get returns a set of Incidents", %{incidents: incidents}, ExVictorOps.Api, [], [get: fn(_url) -> incidents end] do
     {:ok, incidents} = ExVictorOps.Incidents.get
-    assert is_map incidents
-    assert %ExVictorOps.Entities.Incident{} = incidents
+    assert is_list incidents
+    assert %ExVictorOps.Entities.Incident{} = List.first(incidents)
   end
 
   test_with_mock "get can return ApiError", %{error: error}, ExVictorOps.Api, [], [get: fn(_url) -> error end] do
