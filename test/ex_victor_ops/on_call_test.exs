@@ -37,4 +37,9 @@ defmodule ExVictorOps.OnCallTest do
     assert is_list user
     for schedule <- user, do: assert %ExVictorOps.Entities.OnCall{} = schedule
   end
+
+  test_with_mock "get_user can return ApiError", %{error: error}, ExVictorOps.Api, [], [get: fn(_url) -> error end] do
+    {:error, error} = ExVictorOps.OnCall.get_user("dlong")
+    assert %ExVictorOps.ApiError{} = error
+  end
 end

@@ -13,11 +13,11 @@ defmodule ExVictorOps.Incidents do
   @doc """
   Returns current incidents.
 
+  TODO: Args are not implemented yet
   *Note: Because of limitations of VictorOps' API, regardless of the filters
   passed in arguments, all incidents are pulled from the VictorOps API and
   then filtered.*
 
-  TODO: Args are not implemented yet
   Args:
     * `phase` - Filters incident by phase. Can be one of `:unacked`, `:acked`, or `:resolved`. Defaults to nil, or all incidents
     * `team` - Team slug to get incidents for. Defaults to nil, or all teams
