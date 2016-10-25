@@ -37,7 +37,7 @@ defmodule ExVictorOps.IncidentsTest do
   end
 
   test_with_mock "gets only dev team Incidents", %{incidents: incidents}, ExVictorOps.Api, [], [get: fn(_url) -> incidents end] do
-    {:ok, incidents} = ExVictorOps.Incidents.get(nil, "dev-team")
+    {:ok, incidents} = ExVictorOps.Incidents.get("dev-team")
     assert is_list incidents
     assert Enum.count(incidents) == 1
     assert List.first(incidents).incidentNumber == "1315"

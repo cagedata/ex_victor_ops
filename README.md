@@ -50,6 +50,27 @@ To find your API key and ID open the [VictorOps Portal](https://portal.victorops
 
 ExVictorOps will come with modules to support each of the [VictorOps API endpoints](portal.victorops.com/public/api-docs.html):
 
+### Incidents
+
+`ExVictorOps.Incidents` gives access to incidents, filtered by the current
+phase or paged team:
+
+    # Get all incidents
+    ExVictorOps.Incidents.get
+    # => [%ExVictorOps.Entities.Incident{...}]
+
+    # Get only incidents which have not been acked
+    ExVictorOps.Incidents.get :triggered
+    # => [%ExVictorOps.Entities.Incident{...}]
+
+    # Get only incidents for the support team
+    ExVictorOps.Incidents.get "support-team"
+    # => [%ExVictorOps.Entities.Incident{...}]
+
+    # Get only triggered incidents for the support team
+    ExVictorOps.Incidents.get :triggered, "support-team"
+    # => [%ExVictorOps.Entities.Incident{...}]
+
 ### On-Call
 
 `ExVictorOps.OnCall` give access to user and team on-call schedules:

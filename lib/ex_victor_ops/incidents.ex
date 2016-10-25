@@ -2,40 +2,80 @@ defmodule ExVictorOps.Incidents do
   @moduledoc """
   Interacts wit hthe Incidents endpoints of the VictorOps API.
 
+  *Note: Because of limitations of VictorOps' API, regardless of the filters
+  passed in arguments, all incidents are pulled from the VictorOps API and
+  then filtered.*
+
   ## Examples
 
       ExVictorOps.Incidents.get
+      > # All incidents
+
+      ExVictorOps.Incidents.get :triggered
+      > # All incidents which have not been acked or resolved
+
+      ExVictorOps.Incidents.get nil,
   """
   alias ExVictorOps.Api
   alias ExVictorOps.Entities
   alias ExVictorOps.ApiError
 
   @doc """
-  Returns current incidents.
-
-  TODO: Args are not implemented yet
-  *Note: Because of limitations of VictorOps' API, regardless of the filters
-  passed in arguments, all incidents are pulled from the VictorOps API and
-  then filtered.*
-
-  Args:
-    * `phase` - Filters incident by phase. Can be one of `:triggered`, `:acked`, or `:resolved`. Defaults to nil, or all incidents
-    * `team` - Team slug to get incidents for. Defaults to nil, or all teams
+  Gets all incidents for organization
   """
-  @spec get(:atom, String.t) :: {:ok, [any()]} | {:error, Map.t}
-  def get(phase \\ nil, team \\ nil) do
+  @spec get() :: {:ok, [%Entities.Incident{}]} | {:error, Map.t}
+  def get do
     response = Api.get("incidents")
     if response.status_code == 200 do
       incidents = Poison.decode!(response.body, as: %{"incidents" => [%Entities.Incident{}]})["incidents"]
-        |> filter_incidents(phase, team)
-      # No need to filter if we don't need to
       {:ok, incidents}
     else
       {:error, ApiError.error_for response.status_code}
     end
   end
 
-  defp filter_incidents(incidents, phase \\ nil, team \\ nil) do
+  @doc """
+  Returns current incidents filtered by phase and/or team.
+
+  Args:
+    * `phase` - Filters incident by phase. Can be one of `:triggered`, `:acked`, or `:resolved`. Defaults to nil, or all incidents
+    * `team` - Team slug to get incidents for. Defaults to nil, or all teams
+  """
+  @spec get(:atom, String.t) :: {:ok, [any()]} | {:error, Map.t}
+  def get(phase, team) do
+    {status, response} = get
+    if status == :ok do
+      incidents = response
+        |> filter_incidents(phase, team)
+      {status, incidents}
+    else
+      {status, response}
+    end
+  end
+
+  @doc """
+  Returns current incidents filtered by phase.
+
+  Args:
+    * `phase` - Filters incident by phase. Can be one of `:triggered`, `:acked`, or `:resolved`. Defaults to nil, or all incidents
+  """
+  @spec get(:atom) :: {:ok, [%Entities.Incident{}]} | {:error, Map.t}
+  def get(phase) when is_atom(phase) and not is_nil(phase) do
+    get(phase, nil)
+  end
+
+  @doc """
+  Returns current incidents filtered by team.
+
+  Args:
+    * `team` - Team slug to get incidents for.
+  """
+  @spec get(String.t) :: {:ok, [%Entities.Incident{}]} | {:error, Map.t}
+  def get(team) when is_bitstring(team) and not is_nil(team) do
+    get(nil, team)
+  end 
+
+  defp filter_incidents(incidents, phase, team) do
     if phase || team do
       Enum.filter(incidents, fn(incident) ->
         # Test phase and team

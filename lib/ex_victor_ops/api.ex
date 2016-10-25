@@ -9,6 +9,7 @@ defmodule ExVictorOps.Api do
     ExVictorOps.Api.get("team/support/oncall/schedule")
     %HTTPotion.Response({...})
   """
+
   use HTTPotion.Base
   alias ExVictorOps.Config
 

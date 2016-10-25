@@ -5,7 +5,7 @@ defmodule ExVictorOps.Mixfile do
     [app: :ex_victor_ops,
      source_url: "https://github.com/cagedata/ex_victor_ops",
      version: "0.4.1",
-     elixir: "~> 1.2",
+     elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      deps: deps,
@@ -13,11 +13,7 @@ defmodule ExVictorOps.Mixfile do
      description: description,
      package: package,
      test_coverage: [tool: ExCoveralls],
-     preferred_cli_env: ["coveralls": :test, "coveralls.detail": :test, "coveralls.post": :test],
-     dialyzer: [
-       # plt_file: "#{System.get_env("HOME")}/#{plt_filename}",
-       flags: ["--no_native", "-Wno_match", "-Wno_return"]
-     ]]
+     preferred_cli_env: ["coveralls": :test, "coveralls.detail": :test, "coveralls.post": :test]]
   end
 
   def application do
