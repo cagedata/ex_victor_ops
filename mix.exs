@@ -34,14 +34,13 @@ defmodule ExVictorOps.Mixfile do
 
   defp deps do
     [
-      {:httpotion, "~> 2.2"},
-      {:poison, "~> 2.1"},
+      {:httpotion, "~> 3.0.0"},
+      {:poison, "~> 3.0.0"},
       {:mock, "~> 0.1", only: :test},
-      {:dialyxir, "~> 0.3", only: [:dev, :test]},
-      {:ex_doc, "~> 0.11", only: [:dev, :test, :docs]},
+      {:ex_doc, "~> 0.14", only: [:dev, :test, :docs]},
       {:earmark, ">= 0.0.0", only: [:dev, :test, :docs]},
       {:inch_ex, ">= 0.0.0", only: :docs},
-      {:excoveralls, "~> 0.4", only: :test}
+      {:excoveralls, "~> 0.5", only: :test}
     ]
   end
 

@@ -22,7 +22,7 @@ defmodule ExVictorOps.Incidents do
     * `phase` - Filters incident by phase. Can be one of `:unacked`, `:acked`, or `:resolved`. Defaults to nil, or all incidents
     * `team` - Team slug to get incidents for. Defaults to nil, or all teams
   """
-  @spec get(:atom, String.t) :: {:atom, any()}
+  @spec get(:atom, String.t) :: {:ok, [any()]} | {:error, Map.t}
   def get(phase \\ nil, team \\ nil) do
     response = Api.get("incidents")
     if response.status_code == 200 do
