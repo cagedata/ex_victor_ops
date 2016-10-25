@@ -17,7 +17,7 @@ ExVictorOps is currently very beta software. You can install it from Hex:
 
     def deps do
       [
-        { :ex_victor_ops, "~> 0.4.1" }
+        { :ex_victor_ops, "~> 0.4.2" }
       ]
     end
 
