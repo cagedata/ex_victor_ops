@@ -42,4 +42,8 @@ defmodule ExVictorOps.IncidentsTest do
     assert Enum.count(incidents) == 1
     assert List.first(incidents).incidentNumber == "1315"
   end
+
+  test_with_mock "raises an error with invalid phase", %{incidents: incidents}, ExVictorOps.Api, [], [get: fn(_url) -> incidents end] do
+    assert_raise RuntimeError, "Invalid phase fooey.", fn -> ExVictorOps.Incidents.get(:fooey) end
+  end
 end

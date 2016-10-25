@@ -53,7 +53,7 @@ defmodule ExVictorOps.Incidents do
       :triggered -> "UNACKED"
       :acked -> "ACKED"
       :resolved -> "RESOLVED"
-      true -> raise "Invalid phase #{filter}."
+      _ -> raise "Invalid phase #{Atom.to_string filter}."
     end
   end
 end
