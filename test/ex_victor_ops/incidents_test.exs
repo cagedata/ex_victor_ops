@@ -28,4 +28,18 @@ defmodule ExVictorOps.IncidentsTest do
     {:error, error} = ExVictorOps.Incidents.get
     assert %ExVictorOps.ApiError{} = error
   end
+
+  test_with_mock "gets only triggered Incidents", %{incidents: incidents}, ExVictorOps.Api, [], [get: fn(_url) -> incidents end] do
+    {:ok, incidents} = ExVictorOps.Incidents.get(:triggered)
+    assert is_list incidents
+    assert Enum.count(incidents) == 1
+    assert List.first(incidents).incidentNumber == "1223"
+  end
+
+  test_with_mock "gets only dev team Incidents", %{incidents: incidents}, ExVictorOps.Api, [], [get: fn(_url) -> incidents end] do
+    {:ok, incidents} = ExVictorOps.Incidents.get(nil, "dev-team")
+    assert is_list incidents
+    assert Enum.count(incidents) == 1
+    assert List.first(incidents).incidentNumber == "1315"
+  end
 end

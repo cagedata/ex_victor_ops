@@ -53,7 +53,7 @@
       "service": "",
       "startTime": "2016-03-09T16:39:31Z",
       "pagedTeams": [
-        "dev-team"
+        "support-team"
       ],
       "pagedUsers": [
         "dlong"
@@ -84,7 +84,7 @@
       "service": "",
       "startTime": "2016-04-08T17:04:52Z",
       "pagedTeams": [
-        "support-team"
+        "dev-team"
       ],
       "pagedUsers": [
         "aaldrich",
